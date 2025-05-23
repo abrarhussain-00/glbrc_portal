@@ -1,0 +1,24 @@
+
+<div>
+  <h2 class="text-xl font-semibold mb-4">Add More Apps</h2>
+<% if user_signed_in? %>
+  <%= form_with url: destroy_user_session_path, method: :delete do %>
+    <%= submit_tag "Logout", class: "bg-red-600 text-black px-4 py-2 rounded hover:bg-red-700" %>
+  <% end %>
+<% end %>
+
+
+  <%= form_with url: add_apps_path, method: :post, class: "space-y-4" do %>
+    <% @available_apps.each do |app| %>
+      <div class="flex items-center space-x-3">
+        <%= check_box_tag "app_ids[]", app.id, false, class: "h-4 w-4 text-blue-600" %>
+        <label class="text-gray-800 font-medium"><%= app.name %></label>
+        <span class="text-sm text-gray-600"><%= app.description %></span>
+      </div>
+    <% end %>
+
+    <%= submit_tag "Add Selected Apps", class: "bg-green-600 text-white px-4 py-2 rounded" %>
+  <% end %>
+
+  <%= link_to "Back", root_path, class: "mt-4 inline-block text-blue-600 hover:underline" %>
+</div>
