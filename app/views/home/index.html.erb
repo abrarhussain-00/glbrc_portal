@@ -2,7 +2,7 @@
     <h1 class="text-2xl font-bold mb-6">Your Apps</h1>
     <% if user_signed_in? %>
     <%= form_with url: destroy_user_session_path, method: :delete do %>
-        <%= submit_tag "Logout", class: "text-black px-4 py-2 rounded hover:bg-red-700" %>
+        <%= submit_tag "Logout" %>
     <% end %>
     <% end %>
 
